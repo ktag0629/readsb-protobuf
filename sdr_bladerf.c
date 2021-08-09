@@ -179,8 +179,7 @@ bool bladeRFOpen() {
                 fpga_path = "/usr/share/Nuand/bladeRF/hostedx115.rbf";
                 break;
             default:
-                fprintf(stderr, "bladeRF: unknown FPGA size, skipping FPGA load");
-                fpga_path = NULL;
+                fpga_path = "/usr/share/Nuand/bladeRF/hostedxA4.rbf";
                 break;
         }
     }
