@@ -199,7 +199,10 @@ bool ubladeRFOpen() {
         }
     }
 
-    if (fpga_path && fpga_path[0]) {
+    fprintf(stderr, "NOTE: FPGA must be unconfigured in order to load new FPGA images\n");
+
+    if (fpga_path && fpga_path[0] && !bladerf_is_fpga_configured(uBladeRF.device)) {
+	
         fprintf(stderr, "bladeRF: loading FPGA bitstream from %s\n", fpga_path);
         if ((status = bladerf_load_fpga(uBladeRF.device, fpga_path)) < 0) {
             fprintf(stderr, "bladerf_load_fpga() failed: %s\n", bladerf_strerror(status));
