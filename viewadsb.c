@@ -82,6 +82,7 @@ static void sigintHandler(int dummy) {
 }
 
 void receiverPositionChanged(float lat, float lon, float alt) {
+		fprintf("Here!")
     /* nothing */
     (void) lat;
     (void) lon;
