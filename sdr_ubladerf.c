@@ -464,8 +464,15 @@ void ubladeRFRun() {
     unsigned ms_per_transfer = 1000 * MODES_MAG_BUF_SAMPLES / Modes.sample_rate;
     if ((status = bladerf_set_stream_timeout(uBladeRF.device, BLADERF_MODULE_RX, ms_per_transfer * (transfers + 2))) < 0) {
         fprintf(stderr, "bladerf_set_stream_timeout() failed: %s\n", bladerf_strerror(status));
+				fprintf(stderr, "Modes.sample_rate: %f\n", Modes.sample_rate);
+				fprintf(stderr, "MODES_MAG_BUF_SAMPLES: %d\n", MODES_MAG_BUF_SAMPLES);
         goto out;
     }
+		else {
+				fprintf(stderr, "Successful~~\n");
+				fprintf(stderr, "Modes.sample_rate: %f\n", Modes.sample_rate);
+				fprintf(stderr, "MODES_MAG_BUF_SAMPLES: %d\n", MODES_MAG_BUF_SAMPLES);
+		}
 
     if ((status = bladerf_enable_module(uBladeRF.device, BLADERF_MODULE_RX, true) < 0)) {
         fprintf(stderr, "bladerf_enable_module(RX, true) failed: %s\n", bladerf_strerror(status));
